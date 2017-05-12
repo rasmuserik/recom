@@ -1,3 +1,12 @@
+// # ReCom
+//
+// Simple reactive components for small projects
+//
+// - single immutable state atom
+// - `ReCom` super class, that only rerenders if depended on data has changed
+// - `get`/`set` - gets, dispatches async set into the state atom
+// - uses redux
+//
 import React from 'react';
 import Immutable from 'immutable';
 import _ from 'lodash';

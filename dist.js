@@ -2461,6 +2461,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_assert__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_assert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_assert__);
+// # ReCom
+//
+// Simple reactive components for small projects
+//
+// - single immutable state atom
+// - `ReCom` super class, that only rerenders if depended on data has changed
+// - `get`/`set` - gets, dispatches async set into the state atom
+// - uses redux
+//
 
 
 
