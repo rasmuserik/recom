@@ -14,5 +14,11 @@
   "repository": "github:solsort/recom",
   "version": "0.0.1",
   "homepage": "http://recom.solsort.com",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "lodash": "^4.17.4",
+    "react": "^15.5.4",
+    "redux": "^3.6.0"
+  }
 }

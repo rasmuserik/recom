@@ -1,3 +1,10 @@
 language: node_js
 node_js:
 - node
+deploy:
+  provider: npm
+  email: npmjs@solsort.com
+  api_key:
+    secure: lIdeit4TNaItI0wD13dohUmqblAXqjJtw2JDTTLF6qemHN1bfzh3uRZdDPbeCExAK/xOeLPZl2ium3m8nxvZJMV1HEW+oYd9dTPa0b7TT+/wAzfzfFUTQF8IP89Mm1KOMUY1lRtMhA9vFeGJrNUTOVWPgqyqakxaxRVsvjJvrSuCTVo0DiXb3Ijw5QQV3JhsL8UNBgXoz0jRp23t3pZYjBD3iTP2DzJHugxd/xz414VkA0eYcDk4B9B/en/XEF88e8AqFLlITQ4+UseZItsH80Xnkf/q8Lte1MtmdLNvY4bx77324B50g2qwGyV9nPj+F/pm1UsE3GBU3EQmsdu3zHQYN0/QYjx0BkDaxO5AZy2qAZkiPl83uIUIAVZ8CmR9EdvYdrZMnlI7NV8Mr2X7fgLtcZhE0/Mx2N8vtrQYQYerzFDnoPmGiyIiqzvC6tqqvxEl22IrHE2Q3dVQEUmXVcif4BYmrAQiAEJPvP3WCXp7n2wSwSjrdJWmfH6ZV6fHDc5BGeI6n9d+EDmLR1pDWUDhl/yUenGxR/0+oeAD2PkybaiiCmwiDzn67DogiLZI1fcqGSmDboA+nECptNHDhbxuOZ+U7atK8BVGAmlQeDHEzTA3rE98iiaNj7V5aqLem+ub3aGQaER/AjWjKYqpER5q6J3R7mxZ1OVFVfSNnOU=
+  on:
+    repo: solsort/recom
