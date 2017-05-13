@@ -2461,6 +2461,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // - `get`/`set` - gets, dispatches async set into the state atom
 // - uses redux
 //
+// ## Literate source code
 
 let React = __webpack_require__(53);
 let Immutable = __webpack_require__(27);

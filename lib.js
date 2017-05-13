@@ -7,6 +7,7 @@
 // - `get`/`set` - gets, dispatches async set into the state atom
 // - uses redux
 //
+// ## Literate source code
 
 let React = require('react');
 let Immutable = require('immutable');

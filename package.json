@@ -12,7 +12,7 @@
   "main": "lib.js",
   "unpkg": "dist.js",
   "repository": "github:solsort/recom",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "http://recom.solsort.com",
   "description": "",
   "dependencies": {
