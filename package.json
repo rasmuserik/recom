@@ -12,11 +12,11 @@
   "main": "lib.js",
   "unpkg": "dist.js",
   "repository": "github:solsort/recom",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "http://recom.solsort.com",
   "description": "",
   "dependencies": {
-    "immutable": "^3.8.1",
+    "immutable": "^4.0.0-rc.2",
     "lodash": "^4.17.4",
     "react": "^15.5.4",
     "redux": "^3.6.0"
