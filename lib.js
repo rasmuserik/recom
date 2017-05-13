@@ -7,11 +7,12 @@
 // - `get`/`set` - gets, dispatches async set into the state atom
 // - uses redux
 //
-import React from 'react';
-import Immutable from 'immutable';
-import _ from 'lodash';
-import { createStore } from 'redux';
-import assert from 'assert';
+
+let React = require('react');
+let Immutable = require('immutable');
+let _ = require('lodash');
+let { createStore } = require('redux');
+let assert = require('assert');
 
 export const SET_IN = 'SET_IN';
 
@@ -63,7 +64,7 @@ export class ReCom extends React.Component {
       return true;
     }
     for (let [path, val] of this.dependencies) {
-      if (!Immutable.is(val, get(path))) {
+      if (!Immutable.is(val, getImm(path))) {
         return true;
       }
     }
@@ -106,7 +107,6 @@ export function get(path, defaultValue) {
 }
 
 function reduce(state = new Immutable.Map(), action) {
-  console.log(state, dispatchTable, action);
   return (dispatchTable[action.type] || (state => state))(state, action);
 }
 

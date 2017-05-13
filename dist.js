@@ -2452,15 +2452,6 @@ module.exports = function(module) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["set"] = set;
 /* harmony export (immutable) */ __webpack_exports__["get"] = get;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_immutable__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_immutable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_immutable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_assert__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_assert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_assert__);
 // # ReCom
 //
 // Simple reactive components for small projects
@@ -2471,10 +2462,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // - uses redux
 //
 
-
-
-
-
+let React = __webpack_require__(53);
+let Immutable = __webpack_require__(27);
+let _ = __webpack_require__(36);
+let { createStore } = __webpack_require__(57);
+let assert = __webpack_require__(26);
 
 const SET_IN = 'SET_IN';
 /* harmony export (immutable) */ __webpack_exports__["SET_IN"] = SET_IN;
@@ -2486,11 +2478,11 @@ const dispatchTable = {
 /* harmony export (immutable) */ __webpack_exports__["dispatchTable"] = dispatchTable;
 
 
-const store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_redux__["a" /* createStore */])(reduce);
+const store = createStore(reduce);
 /* harmony export (immutable) */ __webpack_exports__["store"] = store;
 
 
-class ReCom extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+class ReCom extends React.Component {
   constructor(props) {
     super(props);
     this.dependencies = new Map();
@@ -2503,7 +2495,7 @@ class ReCom extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       this.accessed.set(path, result);
     }
 
-    if (__WEBPACK_IMPORTED_MODULE_1_immutable___default.a.isImmutable(result)) {
+    if (Immutable.isImmutable(result)) {
       result = result.toJS();
     }
 
@@ -2528,11 +2520,11 @@ class ReCom extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   shouldComponentUpdate(props, state) {
-    if (!__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.isEqual(props, this.props)) {
+    if (!_.isEqual(props, this.props)) {
       return true;
     }
     for (let [path, val] of this.dependencies) {
-      if (!__WEBPACK_IMPORTED_MODULE_1_immutable___default.a.is(val, get(path))) {
+      if (!Immutable.is(val, getImm(path))) {
         return true;
       }
     }
@@ -2570,14 +2562,13 @@ function getImm(path, defaultValue) {
 
 function get(path, defaultValue) {
   let result = getImm(path, defaultValue);
-  if (!__WEBPACK_IMPORTED_MODULE_1_immutable___default.a.isImmutable(result)) {
+  if (!Immutable.isImmutable(result)) {
     return result;
   }
   return result.toJS();
 }
 
-function reduce(state = new __WEBPACK_IMPORTED_MODULE_1_immutable___default.a.Map(), action) {
-  console.log(state, dispatchTable, action);
+function reduce(state = new Immutable.Map(), action) {
   return (dispatchTable[action.type] || (state => state))(state, action);
 }
 
@@ -2586,7 +2577,7 @@ function makePath(path) {
     path = path.split('.');
   }
 
-  __WEBPACK_IMPORTED_MODULE_4_assert___default()(Array.isArray(path));
+  assert(Array.isArray(path));
   return path;
 }
 
@@ -2594,22 +2585,22 @@ function setIn(o, path, val) {
   path = makePath(path);
 
   if (path.length === 0) {
-    return __WEBPACK_IMPORTED_MODULE_1_immutable___default.a.fromJS(val);
+    return Immutable.fromJS(val);
   }
 
   let key = path[0];
   path = path.slice(1);
 
   if (typeof key === 'string') {
-    if (!(o instanceof __WEBPACK_IMPORTED_MODULE_1_immutable___default.a.Map)) {
-      o = new __WEBPACK_IMPORTED_MODULE_1_immutable___default.a.Map();
+    if (!(o instanceof Immutable.Map)) {
+      o = new Immutable.Map();
     }
   } else if (typeof key === 'number') {
-    if (!(o instanceof __WEBPACK_IMPORTED_MODULE_1_immutable___default.a.List)) {
-      o = new __WEBPACK_IMPORTED_MODULE_1_immutable___default.a.List();
+    if (!(o instanceof Immutable.List)) {
+      o = new Immutable.List();
     }
   } else {
-    __WEBPACK_IMPORTED_MODULE_4_assert___default()(false);
+    assert(false);
   }
 
   return o.set(key, setIn(o.get(key), path, val));
@@ -27867,7 +27858,7 @@ module.exports = __webpack_require__(42);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export default */
+/* harmony export (immutable) */ __webpack_exports__["a"] = applyMiddleware;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(21);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -27923,7 +27914,7 @@ function applyMiddleware() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export default */
+/* harmony export (immutable) */ __webpack_exports__["a"] = bindActionCreators;
 function bindActionCreator(actionCreator, dispatch) {
   return function () {
     return dispatch(actionCreator.apply(undefined, arguments));
@@ -27977,7 +27968,7 @@ function bindActionCreators(actionCreators, dispatch) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* unused harmony export default */
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(23);
@@ -28117,17 +28108,18 @@ function combineReducers(reducers) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(23);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["a"]; });
-/* unused harmony reexport combineReducers */
-/* unused harmony reexport bindActionCreators */
-/* unused harmony reexport applyMiddleware */
-/* unused harmony reexport compose */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return __WEBPACK_IMPORTED_MODULE_4__compose__["a"]; });
 
 
 
